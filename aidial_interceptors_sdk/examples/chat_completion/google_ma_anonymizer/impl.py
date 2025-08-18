@@ -160,7 +160,7 @@ class GoogleModelArmorAnonymizerInterceptor(ChatCompletionInterceptor):
             self.content_buffers[choice_idx] = buffer
 
         return choice
-
+    @override
     async def on_stream_end(self) -> None:
         for choice_idx in range(self.request_n):
             if stage := self.original_response_stages.get(choice_idx):
